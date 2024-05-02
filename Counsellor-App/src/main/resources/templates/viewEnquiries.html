@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Enquiries</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+	 <h2>View Enquiries</h2>
+    <form th:action="@{/enquiries}" th:object="${enq}" method="post" class="needs-validation" novalidate>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="dashboard">VTU</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="enquiry">AddEnquiry <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="enquiries">ViewEnquiry</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Logout</a>
+                </li>
+            </ul>
+            
+        </div>
+    </nav>
+  
+    <div class="container">
+        <form th:action="@{/filter-enqs}" th:object="${enq}" method="post">
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <td><label for="mode">Mode:</label></td>
+                    <td>
+                        <select th:field="*{mode}" class="form-control" id="mode">
+                            <option value="">Select Class Mode</option>
+                            <option value="Online">Online</option>
+                            <option value="Offline">Offline</option>
+                        </select>
+                    </td>
+                    <td><label for="course">Course:</label></td>
+                    <td>
+                        <select th:field="*{course}" class="form-control" id="course" >
+                            <option value="">Course</option>
+                            <option value="Java">Java</option>
+                            <option value="Python">Python</option>
+                            <option value="Devops">Devops</option>
+                        </select>
+                    </td>
+                    <td><label for="status">Status:</label></td>
+                    <td>
+                        <select th:field="*{status}" class="form-control" id="status" >
+                            <option value="">Status</option>
+                            <option value="new">Open</option>
+                            <option value="lost">Lost</option>
+                            <option value="enrolled">Enrolled</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" class="btn btn-primary" value="Search"/>
+        </form>
+        
+        <div th:if="${smsg}" class="alert alert-success" role="alert" th:text="${smsg}"></div>
+        <div th:if="${emsg}" class="alert alert-danger" role="alert" th:text="${emsg}"></div>
+    </div>
+    
+     <div class="container">
+       
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Mode</th>
+                    <th>Course</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="enq : ${enqs}">
+                    <td th:text="${enq.stuid}"/>
+                    <td th:text="${enq.stuname}"/>
+                    <td th:text="${enq.stuno}"/>
+                    <td th:text="${enq.mode}"/>
+                    <td th:text="${enq.course}"/>
+                    <td th:text="${enq.status}"/>
+                    <td>
+                         <a class="nav-link" href="enquiry">Edit</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+</body>
+</html>

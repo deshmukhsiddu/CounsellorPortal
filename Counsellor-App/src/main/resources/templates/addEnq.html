@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Add Enquiry</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<a class="navbar-brand" href="dashboard">VTU</a>&nbsp;
+
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="enquiry">AddEnquiry <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="enquiries">ViewEnquiry</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/">Logout</a>
+				</li>
+			</ul>
+			
+		</div>
+	</nav>
+
+	<div class="container">
+			<h2 >Add Enquiry</h2>
+		<table class="table">
+			<form th:action="@{/enquiry}" th:object="${enq}" method="post" class="needs-validation" novalidate>
+				<tr>
+					<td><label for="stuname">Student Name:</label></td>
+					<td><input type="text" th:field="*{stuname}" class="form-control" id="stuname" required></td>
+				</tr>
+				<tr>
+					<td><label for="stuno">Student PhoneNum:</label></td>
+					<td><input type="text" th:field="*{stuno}" class="form-control" id="stuno" required></td>
+				</tr>
+				<tr>
+					<td><label for="mode">Class Mode:</label></td>
+					<td>
+						<select th:field="*{mode}" class="form-control" id="mode" required>
+							<option value="">-Select-</option>
+							<option value="Online">Online</option>
+							<option value="Class Room">Class Room</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><label for="course">Course:</label></td>
+					<td>
+						<select th:field="*{course}" class="form-control" id="course" required>
+							<option value="">-Select-</option>
+							<option value="Java">Java</option>
+							<option value="Python">Python</option>
+							<option value="Devops">Devops</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+
+					<td><label for="status">Status:</label></td>
+					<td>
+						<select th:field="*{status}" class="form-control" id="status" required>
+							<option value="">-Select-</option>
+							<option value="new">new</option>
+							<option value="lost">Lost</option>
+							<option value="enrolled">Enrolled</option>
+						</select>
+					</td>
+				</tr>
+				<td></td>
+				<td>
+					<input type="submit" value="Save" class="btn btn-primary" />
+				</td>
+		</table>
+
+		<div th:if="${smsg}" class="alert alert-success" role="alert" th:text="${smsg}"></div>
+		<div th:if="${emsg}" class="alert alert-danger" role="alert" th:text="${emsg}"></div>
+	</div>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

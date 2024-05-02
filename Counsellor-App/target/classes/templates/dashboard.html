@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="dashboard">VTU</a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="enquiry">AddEnquiry <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="enquiries">ViewEnquiry</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container mt-5" >
+        <h1>Welcome to  VTU Dashboard</h1>
+        <div>Total Enquiries: <span th:text="${dashboard.totalenq}"></span></div>
+        <div>Open Enquiries: <span th:text="${dashboard.openenq}"></span></div>
+        <div>Enrolled Enquiries: <span th:text="${dashboard.enrollenq}"></span></div>
+        <div>Lost Enquiries: <span th:text="${dashboard.lostenq}"></span></div>
+        
+        <a href="logout" class="btn btn-danger mt-3">Log Out</a>
+    </div>
+    
+    <!-- Bootstrap JS and dependencies (jQuery, Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
